@@ -1,0 +1,37 @@
+@import "~styles/vars";
+
+ul.places {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  .place {
+    width: 300px;
+    border-radius: 6px;
+    box-shadow: 0px 1px 3px 0px @box-shadow-color;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      height: 165px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &--content {
+      padding: 4px 8px;
+
+      h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+      h3 {
+        margin: 0;
+        font-size: 12px;
+        color: lighten(black, 30%);
+        font-weight: normal;
+      }
+    }
+  }
+}

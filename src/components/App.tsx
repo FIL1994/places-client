@@ -5,7 +5,6 @@ const App = () => (
   <>
     <header>Places</header>
     <main>
-      content
       <Places />
     </main>
   </>

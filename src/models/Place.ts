@@ -3,5 +3,5 @@ export default interface Place {
   title: string;
   address: string;
   description?: string;
-  imagesUrls?: string[];
+  imageUrls?: string[];
 }

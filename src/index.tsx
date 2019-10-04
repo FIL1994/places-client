@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import App from "./components/App";
+import "./styles/vars.less";
 import "./index.less";
 
 const client = new ApolloClient({
