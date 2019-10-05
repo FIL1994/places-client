@@ -4,4 +4,6 @@ export default interface Place {
   address: string;
   description?: string;
   imageUrls?: string[];
+  lat: number;
+  lng: number;
 }

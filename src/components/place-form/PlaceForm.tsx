@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import TextField from "@material-ui/core/TextField";
@@ -32,6 +33,7 @@ const ADD_PLACE = gql`
 
 const PlaceForm: React.FunctionComponent = () => {
   const isMapLoaded = React.useContext(PlacesMapContext);
+  const history = useHistory();
   const [addPlace] = useMutation(ADD_PLACE);
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -53,7 +55,7 @@ const PlaceForm: React.FunctionComponent = () => {
       setAddress(place.formatted_address);
       setLat(place.geometry.location.lat());
       setLng(place.geometry.location.lng());
-      if (imageUrl.trim().length < 1) {
+      if (imageUrl.trim().length < 1 && place.photos) {
         setImageUrl(place.photos[0].getUrl({}));
       }
     });
@@ -63,18 +65,24 @@ const PlaceForm: React.FunctionComponent = () => {
   return (
     <div className="place-form">
       <form
-        onSubmit={e => {
-          e.preventDefault();
-          addPlace({
-            variables: {
-              title,
-              description,
-              imageUrls: [imageUrl],
-              address,
-              lat,
-              lng
-            }
-          });
+        onSubmit={async event => {
+          event.preventDefault();
+
+          try {
+            await addPlace({
+              variables: {
+                title,
+                description,
+                imageUrls: [imageUrl],
+                address,
+                lat,
+                lng
+              }
+            });
+            history.push("/");
+          } catch (e) {
+            console.log("Error", e);
+          }
         }}
       >
         <TextField
