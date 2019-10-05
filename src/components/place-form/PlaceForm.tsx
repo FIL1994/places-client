@@ -65,8 +65,8 @@ const PlaceForm: React.FunctionComponent = () => {
   return (
     <div className="place-form">
       <form
-        onSubmit={async e => {
-          e.preventDefault();
+        onSubmit={async event => {
+          event.preventDefault();
 
           try {
             await addPlace({
@@ -80,7 +80,9 @@ const PlaceForm: React.FunctionComponent = () => {
               }
             });
             history.push("/");
-          } catch (e) {}
+          } catch (e) {
+            console.log("Error", e);
+          }
         }}
       >
         <TextField
