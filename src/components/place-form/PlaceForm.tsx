@@ -4,7 +4,9 @@ const PlaceForm: React.FunctionComponent = () => {
   return (
     <div>
       <h3>Add Place</h3>
-      <form></form>
+      <form>
+        <div />
+      </form>
     </div>
   );
 };
