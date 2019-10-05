@@ -12,6 +12,8 @@ const ADD_PLACE = gql`
     $description: String
     $address: String!
     $imageUrls: [String!]
+    $lat: Float!
+    $lng: Float!
   ) {
     addPlace(
       place: {
@@ -19,6 +21,8 @@ const ADD_PLACE = gql`
         description: $description
         address: $address
         imageUrls: $imageUrls
+        lat: $lat
+        lng: $lng
       }
     ) {
       id
@@ -36,12 +40,22 @@ const PlaceForm: React.FunctionComponent = () => {
     /* eslint-disable no-undef */
     google.maps.places.Autocomplete
   >();
+  const [address, setAddress] = React.useState("");
+  const [lat, setLat] = React.useState();
+  const [lng, setLng] = React.useState();
 
   React.useEffect(() => {
     if (!googleAutocomplete) return;
 
     google.maps.event.addListener(googleAutocomplete, "place_changed", () => {
-      console.log("place", googleAutocomplete.getPlace());
+      const place = googleAutocomplete.getPlace();
+
+      setAddress(place.formatted_address);
+      setLat(place.geometry.location.lat());
+      setLng(place.geometry.location.lng());
+      if (imageUrl.trim().length < 1) {
+        setImageUrl(place.photos[0].getUrl({}));
+      }
     });
   }, [googleAutocomplete]);
 
@@ -56,7 +70,9 @@ const PlaceForm: React.FunctionComponent = () => {
               title,
               description,
               imageUrls: [imageUrl],
-              address: ""
+              address,
+              lat,
+              lng
             }
           });
         }}
