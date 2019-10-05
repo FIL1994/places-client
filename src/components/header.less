@@ -1,0 +1,24 @@
+@import "~styles/vars";
+
+header {
+  height: @header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 3px 1px @box-shadow-color;
+  background: white;
+  position: relative;
+  z-index: 1;
+
+  h1 {
+    letter-spacing: 4px;
+    text-transform: lowercase;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .places-btn {
+    position: absolute;
+    left: @horizontal-margin;
+  }
+}

@@ -3,25 +3,11 @@
 body {
   font-size: 14px;
 }
-@header-height: 40px;
-
-header {
-  letter-spacing: 4px;
-  text-transform: lowercase;
-  height: @header-height;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 3px 1px @box-shadow-color;
-  background: white;
-  position: relative;
-  z-index: 1;
-}
 
 main {
-  @offset: @header-height + @header-margin-bottom;
+  @offset: @header-height;
 
   height: calc(100vh - @offset);
   display: flex;
-  padding: 0 16px;
+  padding: 0 @horizontal-margin;
 }
