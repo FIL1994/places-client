@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "lint": "eslint --ext .tsx,.ts src"
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint --ext .tsx,.ts src",
+    "lint:css": "stylelint 'src/**/*.less'"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +26,10 @@
     "less": "^3.10.3",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
+    "stylelint": "^11.0.0",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-prettier": "^1.1.1",
     "typescript": "^3.6.3"
   },
   "dependencies": {

@@ -13,13 +13,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-bottom: @header-margin-bottom;
-  box-shadow: 0px 0px 3px 1px @box-shadow-color;
+  box-shadow: 0 0 3px 1px @box-shadow-color;
 }
 
 main {
   @offset: @header-height + @header-margin-bottom;
+
   height: calc(100vh - @offset);
   display: flex;
   padding: 0 16px;
