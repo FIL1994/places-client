@@ -1,10 +1,11 @@
 import * as React from "react";
 import Places from "./Places";
 import Map from "./Map";
+import Header from "./Header";
 
 const App = () => (
   <>
-    <header>Places</header>
+    <Header />
     <main>
       <Places />
       <Map />

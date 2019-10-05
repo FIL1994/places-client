@@ -1,0 +1,27 @@
+@import "~styles/vars";
+
+.places-btn {
+  @btn-box-shadow-color: darken(@box-shadow-color, 5%);
+
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 0;
+  border-radius: @border-radius;
+  border: 0;
+  box-shadow: 0 1px 8px 0 @btn-box-shadow-color;
+  padding: 2px 8px;
+  cursor: pointer;
+  background: darken(white, 2%);
+
+  svg {
+    height: 24px;
+    width: auto;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 @btn-box-shadow-color;
+  }
+}
