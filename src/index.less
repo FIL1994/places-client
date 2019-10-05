@@ -4,7 +4,6 @@ body {
   font-size: 14px;
 }
 @header-height: 40px;
-@header-margin-bottom: 16px;
 
 header {
   letter-spacing: 4px;
@@ -13,8 +12,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: @header-margin-bottom;
   box-shadow: 0 0 3px 1px @box-shadow-color;
+  background: white;
+  position: relative;
+  z-index: 1;
 }
 
 main {

@@ -3,7 +3,9 @@
 .map {
   flex: 1;
   overflow: hidden;
-  border-radius: @border-radius;
+  border-top-left-radius: @border-radius;
+  border-top-right-radius: @border-radius;
+  margin-top: @header-margin-bottom;
 
   // hide div coming from Google LoadScript component
   > div:first-child {
