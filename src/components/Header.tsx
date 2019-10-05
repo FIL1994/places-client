@@ -3,7 +3,7 @@ import "./header.less";
 import Add from "../icons/Add";
 import Button from "./elements/Button";
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
   return (
     <header>
       <h1>Places</h1>
