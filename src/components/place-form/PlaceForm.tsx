@@ -1,20 +1,64 @@
 import * as React from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { PlacesMapContext } from "../App";
 import "./place-form.less";
 
+const ADD_PLACE = gql`
+  mutation AddPlace(
+    $title: String!
+    $description: String
+    $address: String!
+    $imageUrls: [String!]
+  ) {
+    addPlace(
+      place: {
+        title: $title
+        description: $description
+        address: $address
+        imageUrls: $imageUrls
+      }
+    ) {
+      id
+    }
+  }
+`;
+
 const PlaceForm: React.FunctionComponent = () => {
+  const isMapLoaded = React.useContext(PlacesMapContext);
+  const [addPlace] = useMutation(ADD_PLACE);
   const [title, setTitle] = React.useState("");
-  const [address, setAddress] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
+  const [googleAutocomplete, setGoogleAutocomplete] = React.useState<
+    /* eslint-disable no-undef */
+    google.maps.places.Autocomplete
+  >();
 
+  React.useEffect(() => {
+    if (!googleAutocomplete) return;
+
+    google.maps.event.addListener(googleAutocomplete, "place_changed", () => {
+      console.log("place", googleAutocomplete.getPlace());
+    });
+  }, [googleAutocomplete]);
+
+  if (!isMapLoaded) return null;
   return (
     <div className="place-form">
       <form
         onSubmit={e => {
           e.preventDefault();
-          console.log("submit");
+          addPlace({
+            variables: {
+              title,
+              description,
+              imageUrls: [imageUrl],
+              address: ""
+            }
+          });
         }}
       >
         <TextField
@@ -24,11 +68,26 @@ const PlaceForm: React.FunctionComponent = () => {
           onChange={e => setTitle(e.target.value)}
         />
         <TextField
+          ref={async ref => {
+            if (!ref || googleAutocomplete) return;
+
+            const input = ref.querySelector("input");
+            if (input) {
+              const autocomplete = new window.google.maps.places.Autocomplete(
+                input
+              );
+              autocomplete.setFields([
+                "geometry",
+                "formatted_address",
+                "photos"
+              ]);
+              setGoogleAutocomplete(autocomplete);
+            } else {
+              /* eslint-disable no-console */
+              console.warn("could not find input");
+            }
+          }}
           label="Address"
-          value={address}
-          onChange={e => setAddress(e.target.value)}
-          multiline
-          rows="2"
         />
         <TextField
           label="Image URL"

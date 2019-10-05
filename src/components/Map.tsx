@@ -1,21 +1,21 @@
 import * as React from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap } from "@react-google-maps/api";
+import { PlacesMapContext } from "./App";
 import "./map.less";
 
 const Map = () => {
+  const isMapLoaded = React.useContext(PlacesMapContext);
+
   return (
     <div className="map">
-      <LoadScript
-        id="script-loader"
-        googleMapsApiKey={process.env.GOOGLE_MAPS_KEY}
-      >
+      {isMapLoaded && (
         <GoogleMap
           onLoad={map => {
             const bounds = new window.google.maps.LatLngBounds();
             map.fitBounds(bounds);
           }}
         />
-      </LoadScript>
+      )}
     </div>
   );
 };
