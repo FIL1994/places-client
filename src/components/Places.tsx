@@ -1,24 +1,9 @@
 import * as React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
-import Place from "../models/Place";
 import "./places.less";
-
-const PLACES = gql`
-  {
-    places {
-      id
-      title
-      description
-      imageUrls
-      address
-    }
-  }
-`;
+import { usePlaces } from "../hooks/requestHooks";
 
 const Places: React.FunctionComponent = () => {
-  const { loading, error, data } = useQuery<{ places: Place[] }>(PLACES);
-  const places = data && data.places;
+  const { loading, error, places } = usePlaces();
 
   if (loading) return null;
   if (error)
@@ -34,7 +19,7 @@ const Places: React.FunctionComponent = () => {
     <ul className="places">
       {places.map(({ imageUrls, ...place }) => (
         <li key={place.id} className="place">
-          {imageUrls && imageUrls.length && (
+          {imageUrls && imageUrls.length > 0 && (
             <img alt={place.title} src={imageUrls[0]} height={165} />
           )}
           <div className="place--content">

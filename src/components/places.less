@@ -43,4 +43,10 @@ ul.places {
       }
     }
   }
+
+  // allow scrolling past the last element
+  &::after {
+    content: "";
+    min-height: 12px;
+  }
 }
