@@ -16,7 +16,7 @@ const PLACES = gql`
   }
 `;
 
-export default function Places() {
+const Places: React.FunctionComponent = () => {
   const { loading, error, data } = useQuery<{ places: Place[] }>(PLACES);
   const places = data && data.places;
 
@@ -46,4 +46,6 @@ export default function Places() {
       ))}
     </ul>
   );
-}
+};
+
+export default Places;

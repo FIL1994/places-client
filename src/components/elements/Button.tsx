@@ -12,13 +12,13 @@ interface ButtonProps
   icon?: React.ReactNode | React.ComponentType;
 }
 
-const Button = ({
+const Button: React.FunctionComponent<ButtonProps> = ({
   as: ButtonComponent = "span",
   icon,
   children,
   className = "",
   ...props
-}: ButtonProps) => {
+}) => {
   return (
     <ButtonComponent
       role="button"

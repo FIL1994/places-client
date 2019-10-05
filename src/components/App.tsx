@@ -1,14 +1,15 @@
 import * as React from "react";
-import Places from "./Places";
-import Map from "./Map";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Header";
+import PlaceList from "./pages/PlaceList";
 
 const App = () => (
   <>
     <Header />
     <main>
-      <Places />
-      <Map />
+      <Router>
+        <Route exact path="/" component={PlaceList} />
+      </Router>
     </main>
   </>
 );
