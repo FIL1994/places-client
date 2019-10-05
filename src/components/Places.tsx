@@ -20,7 +20,7 @@ export default function Places() {
   const { loading, error, data } = useQuery<{ places: Place[] }>(PLACES);
   const places = data && data.places;
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return null;
   if (error)
     return (
       <p>
@@ -29,14 +29,12 @@ export default function Places() {
       </p>
     );
 
-  console.log("places", places);
-
   return (
     <ul className="places">
       {places.map(({ imageUrls, ...place }) => (
         <li key={place.id} className="place">
           {imageUrls && imageUrls.length && (
-            <img alt={place.title} src={imageUrls[0]} />
+            <img alt={place.title} src={imageUrls[0]} height={165} />
           )}
           <div className="place--content">
             <h2>{place.title}</h2>
