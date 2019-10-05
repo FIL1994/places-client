@@ -25,7 +25,8 @@ export default function Places() {
     return (
       <p>
         Error!
-        <br /> {error.message}
+        <br />
+        {error.message}
       </p>
     );
 
