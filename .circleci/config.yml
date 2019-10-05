@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    parallelism: 4
+    steps:
+      - checkout
+      - run:
+          name: Install Packages
+          command: npm ci
+      - run:
+          name: Run Lint
+          command: npm run lint
+workflows:
+  version: 2
+  test_flow:
+    jobs:
+      - build
