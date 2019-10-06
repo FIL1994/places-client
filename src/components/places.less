@@ -1,26 +1,44 @@
 @import "~styles/vars";
 
+.hide-scrollbar() {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 ul.places {
+  @place-box-shadow-color: darken(@box-shadow-color, 4%);
+
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
   overflow-y: auto;
-  scrollbar-width: none;
-  padding-right: 12px;
+  padding: 6px;
+  margin: -6px;
+  padding-right: 18px;
+  .hide-scrollbar();
 
   .place {
     width: 300px;
     border-radius: @border-radius;
-    box-shadow: 0 1px 3px 0 @box-shadow-color;
+    box-shadow: 0 1px 3px 0 @place-box-shadow-color;
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    transition: 0.2s ease box-shadow;
 
     &:first-child {
       margin-top: @header-margin-bottom;
+    }
+
+    &:not(.selected) {
+      cursor: pointer;
+    }
+    &.selected {
+      box-shadow: 0 1px 5px 0 darken(@place-box-shadow-color, 10%);
     }
 
     img {

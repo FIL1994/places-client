@@ -39,7 +39,6 @@ const PlaceForm: React.FunctionComponent = () => {
   const [description, setDescription] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
   const [googleAutocomplete, setGoogleAutocomplete] = React.useState<
-    /* eslint-disable no-undef */
     google.maps.places.Autocomplete
   >();
   const [address, setAddress] = React.useState("");
@@ -49,16 +48,20 @@ const PlaceForm: React.FunctionComponent = () => {
   React.useEffect(() => {
     if (!googleAutocomplete) return;
 
-    google.maps.event.addListener(googleAutocomplete, "place_changed", () => {
-      const place = googleAutocomplete.getPlace();
+    window.google.maps.event.addListener(
+      googleAutocomplete,
+      "place_changed",
+      () => {
+        const place = googleAutocomplete.getPlace();
 
-      setAddress(place.formatted_address);
-      setLat(place.geometry.location.lat());
-      setLng(place.geometry.location.lng());
-      if (imageUrl.trim().length < 1 && place.photos) {
-        setImageUrl(place.photos[0].getUrl({}));
+        setAddress(place.formatted_address);
+        setLat(place.geometry.location.lat());
+        setLng(place.geometry.location.lng());
+        if (imageUrl.trim().length < 1 && place.photos) {
+          setImageUrl(place.photos[0].getUrl({}));
+        }
       }
-    });
+    );
   }, [googleAutocomplete]);
 
   if (!isMapLoaded) return null;
@@ -109,6 +112,7 @@ const PlaceForm: React.FunctionComponent = () => {
             } else {
               /* eslint-disable no-console */
               console.warn("could not find input");
+              /* eslint-enable no-console */
             }
           }}
           label="Address"
