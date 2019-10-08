@@ -9,6 +9,22 @@ const Places: React.FunctionComponent = () => {
   const { setSelectedPlaceId, selectedPlaceId, map } = React.useContext(
     PlacesContext
   );
+  const placesRef = React.useRef<HTMLElement>();
+
+  React.useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const { target } = event;
+      if (target instanceof HTMLElement) {
+        const { current: placesEl } = placesRef;
+        const isPlace = target !== placesEl && placesEl.contains(target);
+        if (!isPlace) setSelectedPlaceId(undefined);
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
 
   if (loading) return null;
   if (error)
@@ -21,7 +37,7 @@ const Places: React.FunctionComponent = () => {
     );
 
   return (
-    <ul className="places">
+    <ul ref={placesRef} className="places">
       {places.map(({ imageUrls, ...place }) => {
         const onClick = () => {
           setSelectedPlaceId(place.id);
