@@ -14,9 +14,19 @@
     cursor: pointer;
     border-radius: 20px;
     transition: 0.3s ease background;
+    animation: 0.2s ease fadeIn;
 
     &:hover {
       background: darken(white, 8%);
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

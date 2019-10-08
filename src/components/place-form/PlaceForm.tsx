@@ -71,21 +71,17 @@ const PlaceForm: React.FunctionComponent = () => {
         onSubmit={async event => {
           event.preventDefault();
 
-          try {
-            await addPlace({
-              variables: {
-                title,
-                description,
-                imageUrls: [imageUrl],
-                address,
-                lat,
-                lng
-              }
-            });
-            history.push("/");
-          } catch (e) {
-            console.log("Error", e);
-          }
+          await addPlace({
+            variables: {
+              title,
+              description,
+              imageUrls: [imageUrl],
+              address,
+              lat,
+              lng
+            }
+          });
+          history.push("/");
         }}
       >
         <TextField
