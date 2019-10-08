@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { LoadScript } from "@react-google-maps/api";
+import { useLoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import PlaceList from "./pages/PlaceList";
 import PlaceForm from "./place-form/PlaceForm";
@@ -11,18 +11,13 @@ PlacesMapContext.displayName = "MapContext";
 const libraries = ["places"];
 
 const App = () => {
-  const [isMapLoaded, setIsMapLoaded] = React.useState(false);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.GOOGLE_MAPS_KEY,
+    libraries
+  });
 
   return (
-    <PlacesMapContext.Provider value={isMapLoaded}>
-      <LoadScript
-        id="script-loader"
-        googleMapsApiKey={process.env.GOOGLE_MAPS_KEY}
-        libraries={libraries}
-        onLoad={() => {
-          setIsMapLoaded(true);
-        }}
-      />
+    <PlacesMapContext.Provider value={isLoaded}>
       <Router>
         <Header />
         <main>

@@ -20,6 +20,9 @@ const Map = () => {
             map.fitBounds(bounds);
             setMap(map);
           }}
+          options={{
+            mapTypeControl: false
+          }}
         >
           {places.map(({ id, lat, lng }) => (
             <Marker
