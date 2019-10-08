@@ -1,40 +1,15 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { PlacesMapContext } from "../App";
+import { useAddPlace } from "../../hooks/requestHooks";
 import "./place-form.less";
-
-const ADD_PLACE = gql`
-  mutation AddPlace(
-    $title: String!
-    $description: String
-    $address: String!
-    $imageUrls: [String!]
-    $lat: Float!
-    $lng: Float!
-  ) {
-    addPlace(
-      place: {
-        title: $title
-        description: $description
-        address: $address
-        imageUrls: $imageUrls
-        lat: $lat
-        lng: $lng
-      }
-    ) {
-      id
-    }
-  }
-`;
 
 const PlaceForm: React.FunctionComponent = () => {
   const isMapLoaded = React.useContext(PlacesMapContext);
   const history = useHistory();
-  const [addPlace] = useMutation(ADD_PLACE);
+  const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
