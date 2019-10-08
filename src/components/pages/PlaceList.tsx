@@ -1,6 +1,7 @@
 import * as React from "react";
 import Places from "../Places";
 import Map from "../Map";
+import ActionBar from "./ActionBar";
 
 interface IPlacesContext {
   selectedPlaceId: number;
@@ -27,7 +28,14 @@ const PlaceList: React.FunctionComponent = () => {
         setMap
       }}
     >
-      <Places />
+      <div
+        style={{
+          marginTop: 16
+        }}
+      >
+        <ActionBar />
+        <Places />
+      </div>
       <Map />
     </PlacesContext.Provider>
   );
