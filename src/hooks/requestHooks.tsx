@@ -8,7 +8,7 @@ interface PlacesQueryResult {
 }
 
 export const usePlaces = (
-  options: QueryHookOptions<PlacesQueryResult, Record<string, any>>
+  options?: QueryHookOptions<PlacesQueryResult, Record<string, any>>
 ) => {
   const { loading, error, data } = useQuery<PlacesQueryResult>(PLACES, {
     displayName: "PlacesQuery",
