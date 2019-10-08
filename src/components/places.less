@@ -32,11 +32,14 @@ ul.places {
     flex-shrink: 0;
     transition: 0.2s ease box-shadow;
 
+    &:first-of-type {
+      margin-top: 2px;
+    }
+
     &:not(.selected) {
       cursor: pointer;
     }
     &.selected {
-      outline: none;
       box-shadow: 0 1px 5px 0 darken(@place-box-shadow-color, 10%);
     }
 

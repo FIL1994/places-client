@@ -9,11 +9,12 @@ const Places: React.FunctionComponent = () => {
   const { setSelectedPlaceId, selectedPlaceId, map } = React.useContext(
     PlacesContext
   );
-  const placesRef = React.useRef<HTMLElement>();
+  const placesRef = React.useRef<HTMLUListElement>();
 
   React.useEffect(() => {
     const onClick = (event: MouseEvent) => {
       const { target } = event;
+
       if (target instanceof HTMLElement) {
         const { current: placesEl } = placesRef;
         const isPlace = target !== placesEl && placesEl.contains(target);
