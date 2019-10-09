@@ -5,8 +5,10 @@ import Button from "@material-ui/core/Button";
 import { PlacesMapContext } from "../App";
 import { useAddPlace } from "../../hooks/requestHooks";
 import "./place-form.less";
+import { PlacesContext } from "../pages/places-list/PlaceList";
 
 const PlaceForm: React.FunctionComponent = () => {
+  const { setIsModalOpen } = React.useContext(PlacesContext);
   const isMapLoaded = React.useContext(PlacesMapContext);
   const history = useHistory();
   const [addPlace] = useAddPlace();
@@ -19,8 +21,6 @@ const PlaceForm: React.FunctionComponent = () => {
   const [address, setAddress] = React.useState("");
   const [lat, setLat] = React.useState();
   const [lng, setLng] = React.useState();
-
-  console.log("googleAutocomplete", googleAutocomplete);
 
   React.useEffect(() => {
     if (!googleAutocomplete) return;
@@ -102,7 +102,7 @@ const PlaceForm: React.FunctionComponent = () => {
                 lng
               }
             });
-            history.push("/");
+            setIsModalOpen(false);
           }}
         >
           Add Place

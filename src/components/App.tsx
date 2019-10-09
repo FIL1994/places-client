@@ -22,7 +22,6 @@ const App = () => {
         <Header />
         <main>
           <Route exact path="/" component={PlaceList} />
-          <Route exact path="/place/create" component={PlaceForm} />
         </main>
       </Router>
     </PlacesMapContext.Provider>
