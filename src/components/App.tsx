@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useLoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import PlaceList from "./pages/places-list/PlaceList";
-import PlaceForm from "./place-form/PlaceForm";
 
 export const PlacesMapContext = React.createContext({});
 PlacesMapContext.displayName = "MapContext";

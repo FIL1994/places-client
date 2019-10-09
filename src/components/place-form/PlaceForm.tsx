@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { PlacesMapContext } from "../App";
@@ -10,7 +9,6 @@ import { PlacesContext } from "../pages/places-list/PlaceList";
 const PlaceForm: React.FunctionComponent = () => {
   const { setIsModalOpen } = React.useContext(PlacesContext);
   const isMapLoaded = React.useContext(PlacesMapContext);
-  const history = useHistory();
   const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
