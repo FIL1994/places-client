@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "build": "parcel build index.html",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .tsx,.ts src",
     "lint:css": "stylelint 'src/**/*.less'"
