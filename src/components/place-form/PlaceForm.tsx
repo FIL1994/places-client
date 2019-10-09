@@ -44,23 +44,7 @@ const PlaceForm: React.FunctionComponent = () => {
   if (!isMapLoaded) return null;
   return (
     <div className="place-form">
-      <form
-        onSubmit={async event => {
-          event.preventDefault();
-
-          await addPlace({
-            variables: {
-              title,
-              description,
-              imageUrls: [imageUrl],
-              address,
-              lat,
-              lng
-            }
-          });
-          history.push("/");
-        }}
-      >
+      <form>
         <TextField
           autoFocus
           label="Title"
@@ -102,7 +86,25 @@ const PlaceForm: React.FunctionComponent = () => {
           multiline
           rows="4"
         />
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={async event => {
+            event.preventDefault();
+
+            await addPlace({
+              variables: {
+                title,
+                description,
+                imageUrls: [imageUrl],
+                address,
+                lat,
+                lng
+              }
+            });
+            history.push("/");
+          }}
+        >
           Add Place
         </Button>
       </form>
