@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./places.less";
 import { usePlaces } from "../hooks/requestHooks";
-import { PlacesContext } from "./pages/PlaceList";
+import { PlacesContext } from "./pages/places-list/PlaceList";
 import { onEnter } from "../utils/helpers";
 
 const Places: React.FunctionComponent = () => {

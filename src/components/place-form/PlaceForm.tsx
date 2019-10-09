@@ -1,14 +1,14 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { PlacesMapContext } from "../App";
 import { useAddPlace } from "../../hooks/requestHooks";
 import "./place-form.less";
+import { PlacesContext } from "../pages/places-list/PlaceList";
 
 const PlaceForm: React.FunctionComponent = () => {
+  const { setIsModalOpen } = React.useContext(PlacesContext);
   const isMapLoaded = React.useContext(PlacesMapContext);
-  const history = useHistory();
   const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -42,23 +42,7 @@ const PlaceForm: React.FunctionComponent = () => {
   if (!isMapLoaded) return null;
   return (
     <div className="place-form">
-      <form
-        onSubmit={async event => {
-          event.preventDefault();
-
-          await addPlace({
-            variables: {
-              title,
-              description,
-              imageUrls: [imageUrl],
-              address,
-              lat,
-              lng
-            }
-          });
-          history.push("/");
-        }}
-      >
+      <form>
         <TextField
           autoFocus
           label="Title"
@@ -100,7 +84,25 @@ const PlaceForm: React.FunctionComponent = () => {
           multiline
           rows="4"
         />
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={async event => {
+            event.preventDefault();
+
+            await addPlace({
+              variables: {
+                title,
+                description,
+                imageUrls: [imageUrl],
+                address,
+                lat,
+                lng
+              }
+            });
+            setIsModalOpen(false);
+          }}
+        >
           Add Place
         </Button>
       </form>
