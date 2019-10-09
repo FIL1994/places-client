@@ -20,6 +20,8 @@ const PlaceForm: React.FunctionComponent = () => {
   const [lat, setLat] = React.useState();
   const [lng, setLng] = React.useState();
 
+  console.log("googleAutocomplete", googleAutocomplete);
+
   React.useEffect(() => {
     if (!googleAutocomplete) return;
 

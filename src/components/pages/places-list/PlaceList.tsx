@@ -1,23 +1,27 @@
 import * as React from "react";
-import Places from "../Places";
-import Map from "../Map";
-import ActionBar from "./ActionBar";
+import Places from "../../Places";
+import Map from "../../Map";
+import ActionBar from "../ActionBar";
+import PlacesModal from "./PlaceModal";
+
+type SetStateFunc<T> = React.Dispatch<React.SetStateAction<T>>;
 
 interface IPlacesContext {
   selectedPlaceId: number;
-  setSelectedPlaceId?: React.Dispatch<React.SetStateAction<number>>;
-  map?: google.maps.Map;
-  setMap?: React.Dispatch<React.SetStateAction<google.maps.Map>>;
+  setSelectedPlaceId: SetStateFunc<number>;
+  map: google.maps.Map;
+  setMap: SetStateFunc<google.maps.Map>;
+  isModalOpen: boolean;
+  setIsModalOpen: SetStateFunc<boolean>;
 }
 
-export const PlacesContext = React.createContext<IPlacesContext>({
-  selectedPlaceId: undefined
-});
+export const PlacesContext = React.createContext<IPlacesContext>(undefined);
 PlacesContext.displayName = "PlacesContext";
 
 const PlaceList: React.FunctionComponent = () => {
   const [selectedPlaceId, setSelectedPlaceId] = React.useState<number>();
   const [map, setMap] = React.useState<google.maps.Map>();
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
     <PlacesContext.Provider
@@ -25,7 +29,9 @@ const PlaceList: React.FunctionComponent = () => {
         selectedPlaceId,
         setSelectedPlaceId,
         map,
-        setMap
+        setMap,
+        isModalOpen,
+        setIsModalOpen
       }}
     >
       <div
@@ -37,6 +43,7 @@ const PlaceList: React.FunctionComponent = () => {
         <Places />
       </div>
       <Map />
+      <PlacesModal />
     </PlacesContext.Provider>
   );
 };

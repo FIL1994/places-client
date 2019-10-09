@@ -3,7 +3,7 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import { PlacesMapContext } from "./App";
 import "./map.less";
 import { usePlaces } from "../hooks/requestHooks";
-import { PlacesContext } from "./pages/PlaceList";
+import { PlacesContext } from "./pages/places-list/PlaceList";
 
 const Map = () => {
   const isMapLoaded = React.useContext(PlacesMapContext);
