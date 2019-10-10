@@ -3,8 +3,8 @@ import MaterialUIModal, {
   ModalProps as MaterialUIModalProps
 } from "@material-ui/core/Modal";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import "./modal.less";
 import { CreateCSSProperties } from "@material-ui/styles/withStyles";
+import "./modal.less";
 
 type ModalSize = "sm" | "md";
 
