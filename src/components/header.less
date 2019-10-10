@@ -9,16 +9,33 @@ header {
   background: white;
   position: relative;
   z-index: 1;
-
-  h1 {
-    letter-spacing: 3px;
-    text-transform: lowercase;
-    font-size: 16px;
-    font-weight: normal;
+  > * {
+    flex: 1;
+    display: flex;
   }
 
-  .places-btn {
-    position: absolute;
-    left: @horizontal-margin;
+  .header-title {
+    flex: 0;
+    justify-content: center;
+
+    h1 {
+      letter-spacing: 3px;
+      text-transform: lowercase;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+
+  .left-content,
+  .right-content {
+    margin: 0 20px;
+  }
+
+  .left-content {
+    justify-content: flex-start;
+  }
+
+  .right-content {
+    justify-content: flex-end;
   }
 }

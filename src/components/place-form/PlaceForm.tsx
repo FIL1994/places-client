@@ -41,72 +41,66 @@ const PlaceForm: React.FunctionComponent = () => {
 
   if (!isMapLoaded) return null;
   return (
-    <div className="place-form">
-      <form>
-        <TextField
-          autoFocus
-          label="Title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <TextField
-          ref={async ref => {
-            if (!ref || googleAutocomplete) return;
+    <form>
+      <TextField
+        autoFocus
+        label="Title"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+      />
+      <TextField
+        ref={async ref => {
+          if (!ref || googleAutocomplete) return;
 
-            const input = ref.querySelector("input");
-            if (input) {
-              const autocomplete = new window.google.maps.places.Autocomplete(
-                input
-              );
-              autocomplete.setFields([
-                "geometry",
-                "formatted_address",
-                "photos"
-              ]);
-              setGoogleAutocomplete(autocomplete);
-            } else {
-              /* eslint-disable no-console */
-              console.warn("could not find input");
-              /* eslint-enable no-console */
+          const input = ref.querySelector("input");
+          if (input) {
+            const autocomplete = new window.google.maps.places.Autocomplete(
+              input
+            );
+            autocomplete.setFields(["geometry", "formatted_address", "photos"]);
+            setGoogleAutocomplete(autocomplete);
+          } else {
+            /* eslint-disable no-console */
+            console.warn("could not find input");
+            /* eslint-enable no-console */
+          }
+        }}
+        label="Address"
+      />
+      <TextField
+        label="Image URL"
+        value={imageUrl}
+        onChange={e => setImageUrl(e.target.value)}
+      />
+      <TextField
+        label="Description"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        multiline
+        rows="4"
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={async event => {
+          event.preventDefault();
+
+          await addPlace({
+            variables: {
+              title,
+              description,
+              imageUrls: [imageUrl],
+              address,
+              lat,
+              lng
             }
-          }}
-          label="Address"
-        />
-        <TextField
-          label="Image URL"
-          value={imageUrl}
-          onChange={e => setImageUrl(e.target.value)}
-        />
-        <TextField
-          label="Description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-          multiline
-          rows="4"
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={async event => {
-            event.preventDefault();
-
-            await addPlace({
-              variables: {
-                title,
-                description,
-                imageUrls: [imageUrl],
-                address,
-                lat,
-                lng
-              }
-            });
-            setIsModalOpen(false);
-          }}
-        >
-          Add Place
-        </Button>
-      </form>
-    </div>
+          });
+          setIsModalOpen(false);
+        }}
+      >
+        Add Place
+      </Button>
+    </form>
   );
 };
 
