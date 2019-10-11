@@ -1,12 +1,12 @@
 import * as React from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
-import { PlacesMapContext } from "./App";
+import { AppContext } from "./App";
 import "./map.less";
 import { usePlaces } from "../hooks/requestHooks";
 import { PlacesContext } from "./pages/places-list/PlaceList";
 
 const Map = () => {
-  const isMapLoaded = React.useContext(PlacesMapContext);
+  const isMapLoaded = React.useContext(AppContext);
   const { setSelectedPlaceId, setMap } = React.useContext(PlacesContext);
   const { places } = usePlaces();
 

@@ -1,14 +1,14 @@
 import * as React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { PlacesMapContext } from "../App";
+import { AppContext } from "../App";
 import { useAddPlace } from "../../hooks/requestHooks";
 import "./place-form.less";
 import { PlacesContext } from "../pages/places-list/PlaceList";
 
 const PlaceForm: React.FunctionComponent = () => {
   const { setIsModalOpen } = React.useContext(PlacesContext);
-  const isMapLoaded = React.useContext(PlacesMapContext);
+  const isMapLoaded = React.useContext(AppContext);
   const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");

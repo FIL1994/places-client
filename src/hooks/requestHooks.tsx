@@ -1,7 +1,7 @@
 import { useQuery, QueryHookOptions, useMutation } from "@apollo/react-hooks";
 import Place from "../models/Place";
-import { PLACES, Queries } from "../components/graphql/queries";
-import { DELETE_PLACE, ADD_PLACE } from "../components/graphql/mutations";
+import { PLACES, Queries } from "../graphql/queries";
+import { DELETE_PLACE, ADD_PLACE, LOGIN, SIGNUP } from "../graphql/mutations";
 
 interface PlacesQueryResult {
   places: Place[];
@@ -29,3 +29,7 @@ export const useAddPlace = () =>
   useMutation(ADD_PLACE, {
     refetchQueries: [Queries.Places]
   });
+
+export const useLogin = () => useMutation(LOGIN);
+
+export const useSignup = () => useMutation(SIGNUP);
