@@ -37,6 +37,7 @@ const SignInModal: React.FunctionComponent<SignInModalProps> = ({
               login: { token, user }
             } = data;
             localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
             client.resetStore();
             setUser(user);
             setIsOpen(false);

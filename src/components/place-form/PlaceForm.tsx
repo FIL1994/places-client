@@ -3,8 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { AppContext } from "../App";
 import { useAddPlace } from "../../hooks/requestHooks";
-import "./place-form.less";
 import { PlacesContext } from "../pages/places-list/PlaceList";
+import "./place-form.less";
 
 const PlaceForm: React.FunctionComponent = () => {
   const { setIsModalOpen } = React.useContext(PlacesContext);
