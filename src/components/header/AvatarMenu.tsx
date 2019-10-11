@@ -13,8 +13,9 @@ const AvatarMenu: React.FunctionComponent = () => {
 
   return (
     <>
-      <span ref={avatarRef} onClick={() => setIsOpen(true)}>
+      <span ref={avatarRef}>
         <Avatar
+          onClick={() => setIsOpen(true)}
           round
           email={user.email}
           name={user.nickname || user.email}
