@@ -34,3 +34,26 @@ export const ADD_PLACE = gql`
     }
   }
 `;
+
+export const LOGIN = gql`
+  mutation Login($email: String!, $password: String!) {
+    login(user: { email: $email, password: $password }) {
+      token
+      user {
+        id
+        email
+        nickname
+      }
+    }
+  }
+`;
+
+export const SIGNUP = gql`
+  mutation Signup($email: String!, $password: String!, $nickname: String) {
+    login(user: { email: $email, password: $password, nickname: $nickname }) {
+      id
+      email
+      nickname
+    }
+  }
+`;

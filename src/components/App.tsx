@@ -3,27 +3,41 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useLoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import PlaceList from "./pages/places-list/PlaceList";
+import User from "../models/User";
 
-export const PlacesMapContext = React.createContext({});
-PlacesMapContext.displayName = "MapContext";
+interface IAppContext {
+  isMapLoaded: boolean;
+  user: User;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
+}
+
+export const AppContext = React.createContext<IAppContext>({} as any);
+AppContext.displayName = "AppContext";
 
 const libraries = ["places"];
 
 const App = () => {
+  const [user, setUser] = React.useState<User>();
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.GOOGLE_MAPS_KEY,
     libraries
   });
 
   return (
-    <PlacesMapContext.Provider value={isLoaded}>
+    <AppContext.Provider
+      value={{
+        isMapLoaded: isLoaded,
+        user,
+        setUser
+      }}
+    >
       <Router>
         <Header />
         <main>
           <Route exact path="/" component={PlaceList} />
         </main>
       </Router>
-    </PlacesMapContext.Provider>
+    </AppContext.Provider>
   );
 };
 
