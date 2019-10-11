@@ -15,3 +15,4 @@ export const client = new ApolloClient({
 
 // call on login and logout
 // client.resetStore()
+export default client;
