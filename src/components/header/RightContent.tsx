@@ -4,18 +4,24 @@ import { AppContext } from "../App";
 import AvatarMenu from "./AvatarMenu";
 
 const RightContent: React.FunctionComponent<{
-  setIsSignInModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ setIsSignInModalOpen }) => {
+  showSignInModal: () => void;
+  showSignUpModal: () => void;
+}> = ({ showSignInModal, showSignUpModal }) => {
   const { user } = React.useContext(AppContext);
 
   return (
     <span className="right-content">
       {user ? (
-        <AvatarMenu user={user} />
+        <AvatarMenu />
       ) : (
-        <Button size="small" onClick={() => setIsSignInModalOpen(true)}>
-          Sign In
-        </Button>
+        <>
+          <Button size="small" onClick={showSignInModal}>
+            Sign In
+          </Button>
+          <Button size="small" variant="outlined" onClick={showSignUpModal}>
+            Sign Up
+          </Button>
+        </>
       )}
     </span>
   );

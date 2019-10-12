@@ -50,7 +50,7 @@ export const LOGIN = gql`
 
 export const SIGNUP = gql`
   mutation Signup($email: String!, $password: String!, $nickname: String) {
-    login(user: { email: $email, password: $password, nickname: $nickname }) {
+    signup(user: { email: $email, password: $password, nickname: $nickname }) {
       id
       email
       nickname
