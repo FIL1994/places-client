@@ -30,6 +30,6 @@ export const useAddPlace = () =>
     refetchQueries: [Queries.Places]
   });
 
-export const useLogin = () => useMutation(LOGIN);
+export const useSignIn = () => useMutation(LOGIN);
 
 export const useSignup = () => useMutation(SIGNUP);

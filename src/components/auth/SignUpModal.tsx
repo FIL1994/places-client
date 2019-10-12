@@ -2,30 +2,38 @@ import * as React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Modal from "../elements/Modal";
-import { useSignIn } from "../../hooks/requestHooks";
+import { useSignup } from "../../hooks/requestHooks";
 import { client } from "../../graphql/client";
 import { AppContext } from "../App";
 
-interface SignInModalProps {
+interface SignUpModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SignInModal: React.FunctionComponent<SignInModalProps> = ({
+const SignUpModal: React.FunctionComponent<SignUpModalProps> = ({
   isOpen,
   setIsOpen
 }) => {
   const { setUser } = React.useContext(AppContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [signIn, { error }] = useSignIn();
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [signUp, { error: networkError }] = useSignup();
+  const [error, setError] = React.useState<string>();
 
   return (
     <Modal open={isOpen} onClose={() => setIsOpen(false)} size="sm">
       <form
         onSubmit={async e => {
           e.preventDefault();
-          const { data, errors } = await signIn({
+          if (password !== confirmPassword) {
+            setError("passwords do not match");
+            return;
+          }
+          if (error !== undefined) setError(undefined);
+
+          const { data, errors } = await signUp({
             variables: {
               email,
               password
@@ -57,13 +65,20 @@ const SignInModal: React.FunctionComponent<SignInModalProps> = ({
           onChange={e => setPassword(e.currentTarget.value)}
           type="password"
         />
+        <TextField
+          label="Confirm Password"
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.currentTarget.value)}
+          type="password"
+        />
         <Button variant="contained" color="primary" type="submit">
-          Sign In
+          Sign Up
         </Button>
-        {error && error.message}
+        {error}
+        {networkError && networkError.message}
       </form>
     </Modal>
   );
 };
 
-export default SignInModal;
+export default SignUpModal;
