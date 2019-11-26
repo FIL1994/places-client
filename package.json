@@ -13,6 +13,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "> 1%",
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "not IE 11"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
