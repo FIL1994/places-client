@@ -1,9 +1,9 @@
 import * as React from "react";
 import defaultIconProps from "./iconDefaultProps";
 
-const Delete: React.FunctionComponent<
-  React.SVGProps<SVGSVGElement>
-> = props => (
+const Delete: React.FunctionComponent<React.SVGProps<
+  SVGSVGElement
+>> = props => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
