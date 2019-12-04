@@ -4,6 +4,7 @@ import { useLoadScript } from "@react-google-maps/api";
 import Header from "./header/Header";
 import PlaceList from "./pages/places-list/PlaceList";
 import User from "../models/User";
+import PlaceLists from "./PlaceLists";
 
 interface IAppContext {
   isMapLoaded: boolean;
@@ -43,6 +44,7 @@ const App = () => {
         <Header />
         <main>
           <Route exact path="/" component={PlaceList} />
+          <Route exact path="/places" component={PlaceLists} />
         </main>
       </Router>
     </AppContext.Provider>

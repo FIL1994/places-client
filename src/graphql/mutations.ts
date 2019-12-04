@@ -2,7 +2,8 @@ import { gql } from "apollo-boost";
 
 export enum Mutations {
   DeletePlace = "DeletePlace",
-  AddPlace = "AddPlace"
+  AddPlace = "AddPlace",
+  AddPlaceList = "AddPlaceList"
 }
 
 export const DELETE_PLACE = gql`
@@ -30,6 +31,14 @@ export const ADD_PLACE = gql`
         lng: $lng
       }
     ) {
+      id
+    }
+  }
+`;
+
+export const ADD_PLACE_LIST = gql`
+  mutation AddPlaceList($title: String!) {
+    addPlaceList(placeList: { title: $title }) {
       id
     }
   }

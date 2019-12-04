@@ -41,10 +41,8 @@ const SignUpModal: React.FunctionComponent<SignUpModalProps> = ({
           });
 
           if (!errors) {
-            const {
-              login: { token, user }
-            } = data;
-            localStorage.setItem("token", token);
+            const { signup: user } = data;
+            // localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
             client.resetStore();
             setUser(user);
