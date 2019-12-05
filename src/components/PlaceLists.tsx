@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { usePlaceLists } from "../hooks/requestHooks";
 
 const PlaceLists = () => {
@@ -17,7 +18,11 @@ const PlaceLists = () => {
   return (
     <ul className="place-lists">
       {placeLists.map(({ id, title }) => {
-        return <li key={id}>{title}</li>;
+        return (
+          <li key={id}>
+            <Link to={`/places/${id}`}>{title}</Link>
+          </li>
+        );
       })}
     </ul>
   );

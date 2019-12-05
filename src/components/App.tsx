@@ -43,8 +43,9 @@ const App = () => {
       <Router>
         <Header />
         <main>
-          <Route exact path="/" component={PlaceList} />
+          <Route exact path="/" component={PlaceLists} />
           <Route exact path="/places" component={PlaceLists} />
+          <Route exact path="/places/:id" component={PlaceList} />
         </main>
       </Router>
     </AppContext.Provider>

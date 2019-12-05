@@ -15,11 +15,12 @@ export const DELETE_PLACE = gql`
 export const ADD_PLACE = gql`
   mutation AddPlace(
     $title: String!
-    $description: String
     $address: String!
-    $imageUrls: [String!]
     $lat: Float!
     $lng: Float!
+    $description: String
+    $imageUrls: [String!]
+    $placeListId: ID!
   ) {
     addPlace(
       place: {
@@ -29,6 +30,7 @@ export const ADD_PLACE = gql`
         imageUrls: $imageUrls
         lat: $lat
         lng: $lng
+        placeListId: $placeListId
       }
     ) {
       id
