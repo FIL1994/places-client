@@ -39,8 +39,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
 
           if (!errors) {
             const { signup: user } = data;
-            // localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
             client.resetStore();
             setUser(user);
             setIsOpen(false);
