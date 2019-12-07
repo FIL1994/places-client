@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
 import Places from "../../Places";
 import Map from "../../Map";
 import ActionBar from "../ActionBar";
@@ -13,12 +14,14 @@ interface IPlacesContext {
   setMap: SetStateFunc<google.maps.Map>;
   isModalOpen: boolean;
   setIsModalOpen: SetStateFunc<boolean>;
+  id: string;
 }
 
 export const PlacesContext = React.createContext<IPlacesContext>(undefined);
 PlacesContext.displayName = "PlacesContext";
 
-const PlaceList: React.FunctionComponent = () => {
+const PlaceList: React.FC = () => {
+  const { id } = useParams();
   const [selectedPlaceId, setSelectedPlaceId] = React.useState<number>();
   const [map, setMap] = React.useState<google.maps.Map>();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -31,7 +34,8 @@ const PlaceList: React.FunctionComponent = () => {
         map,
         setMap,
         isModalOpen,
-        setIsModalOpen
+        setIsModalOpen,
+        id
       }}
     >
       <div

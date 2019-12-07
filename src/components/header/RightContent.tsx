@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { AppContext } from "../App";
 import AvatarMenu from "./AvatarMenu";
 
-const RightContent: React.FunctionComponent<{
+const RightContent: React.FC<{
   showSignInModal: () => void;
   showSignUpModal: () => void;
 }> = ({ showSignInModal, showSignUpModal }) => {

@@ -6,8 +6,8 @@ import { useAddPlace } from "../../hooks/requestHooks";
 import { PlacesContext } from "../pages/places-list/PlaceList";
 import "./place-form.less";
 
-const PlaceForm: React.FunctionComponent = () => {
-  const { setIsModalOpen } = React.useContext(PlacesContext);
+const PlaceForm: React.FC = () => {
+  const { setIsModalOpen, id } = React.useContext(PlacesContext);
   const isMapLoaded = React.useContext(AppContext);
   const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
@@ -92,7 +92,8 @@ const PlaceForm: React.FunctionComponent = () => {
               imageUrls: [imageUrl],
               address,
               lat,
-              lng
+              lng,
+              placeListId: id
             }
           });
           setIsModalOpen(false);

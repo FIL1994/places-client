@@ -18,7 +18,7 @@ interface ModalProps extends MaterialUIModalProps {
   size?: ModalSize;
 }
 
-const Modal: React.FunctionComponent<ModalProps> = ({
+const Modal: React.FC<ModalProps> = ({
   className = "",
   size = "md",
   children,

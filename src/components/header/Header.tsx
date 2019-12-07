@@ -1,10 +1,11 @@
-import * as React from "react";
-import "./header.less";
+import React from "react";
+import { Link } from "react-router-dom";
 import SignInModal from "../auth/SignInModal";
 import RightContent from "./RightContent";
 import SignUpModal from "../auth/SignUpModal";
+import "./header.less";
 
-const Header: React.FunctionComponent = () => {
+const Header: React.FC = () => {
   const [isSignInModalOpen, setIsSignInModalOpen] = React.useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = React.useState(false);
 
@@ -13,7 +14,9 @@ const Header: React.FunctionComponent = () => {
       <header>
         <span className="left-content" />
         <span className="header-title">
-          <h1>Places</h1>
+          <h1>
+            <Link to="/">Places</Link>
+          </h1>
         </span>
         <RightContent
           showSignInModal={() => setIsSignInModalOpen(true)}

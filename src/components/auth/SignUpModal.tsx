@@ -11,10 +11,7 @@ interface SignUpModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SignUpModal: React.FunctionComponent<SignUpModalProps> = ({
-  isOpen,
-  setIsOpen
-}) => {
+const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
   const { setUser } = React.useContext(AppContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -41,11 +38,7 @@ const SignUpModal: React.FunctionComponent<SignUpModalProps> = ({
           });
 
           if (!errors) {
-            const {
-              login: { token, user }
-            } = data;
-            localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
+            const { signup: user } = data;
             client.resetStore();
             setUser(user);
             setIsOpen(false);

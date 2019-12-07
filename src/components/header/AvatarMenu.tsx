@@ -6,7 +6,7 @@ import "./avatar-menu.less";
 import client from "../../graphql/client";
 import { AppContext } from "../App";
 
-const AvatarMenu: React.FunctionComponent = () => {
+const AvatarMenu: React.FC = () => {
   const { user, setUser } = React.useContext(AppContext);
   const [isOpen, setIsOpen] = React.useState(false);
   const avatarRef = React.useRef<HTMLSpanElement>();
