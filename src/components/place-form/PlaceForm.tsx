@@ -89,7 +89,7 @@ const PlaceForm: React.FC = () => {
             variables: {
               title,
               description,
-              imageUrls: [imageUrl],
+              imageUrl,
               address,
               lat,
               lng,

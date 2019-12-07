@@ -19,7 +19,7 @@ export const ADD_PLACE = gql`
     $lat: Float!
     $lng: Float!
     $description: String
-    $imageUrls: [String!]
+    $imageUrl: String!
     $placeListId: ID!
   ) {
     addPlace(
@@ -27,7 +27,7 @@ export const ADD_PLACE = gql`
         title: $title
         description: $description
         address: $address
-        imageUrls: $imageUrls
+        imageUrl: $imageUrl
         lat: $lat
         lng: $lng
         placeListId: $placeListId

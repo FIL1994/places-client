@@ -40,7 +40,7 @@ const Places: React.FC = () => {
 
   return (
     <ul ref={placesRef as any} className="places">
-      {places.map(({ imageUrls, ...place }) => {
+      {places.map(({ imageUrl, ...place }) => {
         const onClick = () => {
           setSelectedPlaceId(place.id);
           map.setCenter({
@@ -62,9 +62,7 @@ const Places: React.FC = () => {
             onKeyDown={onEnter(onClick)}
           >
             {/* eslint-enable */}
-            {imageUrls && imageUrls.length > 0 && (
-              <img alt={place.title} src={imageUrls[0]} height={165} />
-            )}
+            {imageUrl && <img alt={place.title} src={imageUrl} height={165} />}
             <div className="place--content">
               <h2>{place.title}</h2>
               <h3>{place.address}</h3>

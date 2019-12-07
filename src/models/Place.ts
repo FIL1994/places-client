@@ -3,7 +3,7 @@ export default interface Place {
   title: string;
   address: string;
   description?: string;
-  imageUrls?: string[];
+  imageUrl?: string;
   lat: number;
   lng: number;
 }

@@ -12,7 +12,7 @@ export const PLACES = gql`
       id
       title
       description
-      imageUrls
+      imageUrl
       address
       lat
       lng
@@ -32,7 +32,7 @@ export const PLACE_LIST = gql`
         lat
         lng
         description
-        imageUrls
+        imageUrl
       }
     }
   }
