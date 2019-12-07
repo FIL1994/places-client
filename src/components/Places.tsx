@@ -4,15 +4,13 @@ import { PlacesContext } from "./pages/places-list/PlaceList";
 import { onEnter } from "../utils/helpers";
 import "./places.less";
 
-const Places: React.FunctionComponent = () => {
+const Places: React.FC = () => {
   const { setSelectedPlaceId, selectedPlaceId, map, id } = React.useContext(
     PlacesContext
   );
   const { loading, error, placeList } = usePlaceList(id);
   const places = placeList?.places ?? [];
   const placesRef = React.useRef<HTMLUListElement>();
-
-  console.log({ placeList, places });
 
   React.useEffect(() => {
     const onClick = (event: MouseEvent) => {
@@ -41,7 +39,7 @@ const Places: React.FunctionComponent = () => {
     );
 
   return (
-    <div ref={placesRef as any} className="places">
+    <ul ref={placesRef as any} className="places">
       {places.map(({ imageUrls, ...place }) => {
         const onClick = () => {
           setSelectedPlaceId(place.id);
@@ -75,7 +73,7 @@ const Places: React.FunctionComponent = () => {
           </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 

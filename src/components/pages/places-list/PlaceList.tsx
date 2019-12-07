@@ -20,7 +20,7 @@ interface IPlacesContext {
 export const PlacesContext = React.createContext<IPlacesContext>(undefined);
 PlacesContext.displayName = "PlacesContext";
 
-const PlaceList: React.FunctionComponent = () => {
+const PlaceList: React.FC = () => {
   const { id } = useParams();
   const [selectedPlaceId, setSelectedPlaceId] = React.useState<number>();
   const [map, setMap] = React.useState<google.maps.Map>();

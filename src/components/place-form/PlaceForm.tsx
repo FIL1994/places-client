@@ -6,7 +6,7 @@ import { useAddPlace } from "../../hooks/requestHooks";
 import { PlacesContext } from "../pages/places-list/PlaceList";
 import "./place-form.less";
 
-const PlaceForm: React.FunctionComponent = () => {
+const PlaceForm: React.FC = () => {
   const { setIsModalOpen, id } = React.useContext(PlacesContext);
   const isMapLoaded = React.useContext(AppContext);
   const [addPlace] = useAddPlace();

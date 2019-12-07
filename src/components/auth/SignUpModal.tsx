@@ -11,7 +11,7 @@ interface SignUpModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SignUpModal: React.FunctionComponent<SignUpModalProps> = ({
+const SignUpModal: React.FC<SignUpModalProps> = ({
   isOpen,
   setIsOpen
 }) => {

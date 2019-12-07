@@ -12,7 +12,7 @@ interface ButtonProps
   icon?: React.ReactNode | React.ComponentType;
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   as: ButtonComponent = "span",
   icon,
   children,

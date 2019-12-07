@@ -1,7 +1,7 @@
 import * as React from "react";
 import defaultIconProps from "./iconDefaultProps";
 
-const AddCircle: React.FunctionComponent<React.SVGProps<
+const AddCircle: React.FC<React.SVGProps<
   SVGSVGElement
 >> = props => (
   <svg
