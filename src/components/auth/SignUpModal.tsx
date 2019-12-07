@@ -11,10 +11,7 @@ interface SignUpModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SignUpModal: React.FC<SignUpModalProps> = ({
-  isOpen,
-  setIsOpen
-}) => {
+const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
   const { setUser } = React.useContext(AppContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
