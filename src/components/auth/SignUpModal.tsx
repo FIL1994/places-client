@@ -3,8 +3,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Modal from "../elements/Modal";
 import { useSignup } from "../../hooks/requestHooks";
-import { client } from "../../graphql/client";
-import { AppContext } from "../App";
 
 interface SignUpModalProps {
   isOpen: boolean;
@@ -12,7 +10,6 @@ interface SignUpModalProps {
 }
 
 const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
-  const { setUser } = React.useContext(AppContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -30,7 +27,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
           }
           if (error !== undefined) setError(undefined);
 
-          const { data, errors } = await signUp({
+          const { errors } = await signUp({
             variables: {
               email,
               password
@@ -38,9 +35,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, setIsOpen }) => {
           });
 
           if (!errors) {
-            const { signup: user } = data;
-            client.resetStore();
-            setUser(user);
             setIsOpen(false);
           }
         }}
