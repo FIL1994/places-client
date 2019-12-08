@@ -14,8 +14,7 @@ const ActionBar = () => {
     await deletePlace({
       variables: {
         placeId: selectedPlaceId
-      },
-      refetchQueries: [Queries.PlaceList]
+      }
     });
   };
 

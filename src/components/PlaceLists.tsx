@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { usePlaceLists } from "../hooks/requestHooks";
+import CreatePlaceList from "./place-list/CreatePlaceList";
 
 const PlaceLists = () => {
   const { loading, error, placeLists } = usePlaceLists();
@@ -16,15 +17,27 @@ const PlaceLists = () => {
     );
 
   return (
-    <ul className="place-lists">
-      {placeLists.map(({ id, title }) => {
-        return (
-          <li key={id}>
-            <Link to={`/places/${id}`}>{title}</Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div
+      style={{
+        marginTop: 15,
+        width: "100%"
+      }}
+    >
+      <CreatePlaceList style={{ marginBottom: 15 }} />
+      {placeLists.length === 0 ? (
+        "You don't have any place lists yet."
+      ) : (
+        <ul className="place-lists">
+          {placeLists.map(({ id, title }) => {
+            return (
+              <li key={id}>
+                <Link to={`/places/${id}`}>{title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 };
 
