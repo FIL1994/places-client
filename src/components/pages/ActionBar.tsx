@@ -4,7 +4,6 @@ import { PlacesContext } from "./places-list/PlaceList";
 import Delete from "../../icons/Delete";
 import { useDeletePlace } from "../../hooks/requestHooks";
 import "./action-bar.less";
-import { Queries } from "../../graphql/queries";
 
 const ActionBar = () => {
   const { selectedPlaceId, setIsModalOpen } = React.useContext(PlacesContext);
