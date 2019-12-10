@@ -1,10 +1,9 @@
-import * as React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useLoadScript } from "@react-google-maps/api";
 import Header from "./header/Header";
-import PlaceList from "./pages/places-list/PlaceList";
 import User from "../models/User";
-import PlaceLists from "./PlaceLists";
+import Routes from "./Routes";
 
 interface IAppContext {
   isMapLoaded: boolean;
@@ -43,9 +42,7 @@ const App = () => {
       <Router>
         <Header />
         <main>
-          <Route exact path="/" component={PlaceLists} />
-          <Route exact path="/places" component={PlaceLists} />
-          <Route exact path="/places/:id" component={PlaceList} />
+          <Routes />
         </main>
       </Router>
     </AppContext.Provider>
