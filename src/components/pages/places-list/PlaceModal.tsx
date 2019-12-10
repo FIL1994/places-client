@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { PlacesContext } from "./PlaceList";
 import Modal from "../../elements/Modal";
 import PlaceForm from "../../place-form/PlaceForm";

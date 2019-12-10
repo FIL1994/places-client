@@ -1,14 +1,12 @@
-import * as React from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { AppContext } from "../App";
 import { useAddPlace } from "../../hooks/requestHooks";
 import { PlacesContext } from "../pages/places-list/PlaceList";
 import "./place-form.less";
 
 const PlaceForm: React.FC = () => {
   const { setIsModalOpen, id } = React.useContext(PlacesContext);
-  const isMapLoaded = React.useContext(AppContext);
   const [addPlace] = useAddPlace();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -39,7 +37,6 @@ const PlaceForm: React.FC = () => {
     );
   }, [googleAutocomplete]);
 
-  if (!isMapLoaded) return null;
   return (
     <form>
       <TextField

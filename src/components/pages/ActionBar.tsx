@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Add from "../../icons/Add";
 import { PlacesContext } from "./places-list/PlaceList";
 import Delete from "../../icons/Delete";

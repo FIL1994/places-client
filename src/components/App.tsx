@@ -3,10 +3,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { useLoadScript } from "@react-google-maps/api";
 import Header from "./header/Header";
 import User from "../models/User";
-import Routes from "./Routes";
+
+const Routes = React.lazy(() => import("./Routes"));
 
 interface IAppContext {
-  isMapLoaded: boolean;
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
 }
@@ -34,7 +34,6 @@ const App = () => {
   return (
     <AppContext.Provider
       value={{
-        isMapLoaded: isLoaded,
         user,
         setUser
       }}
@@ -42,7 +41,11 @@ const App = () => {
       <Router>
         <Header />
         <main>
-          <Routes />
+          {isLoaded && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes />
+            </Suspense>
+          )}
         </main>
       </Router>
     </AppContext.Provider>
