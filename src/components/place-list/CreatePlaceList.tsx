@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import CreateInput from "../elements/CreateInput";
@@ -10,6 +10,7 @@ const CreatePlaceList: React.FC<Omit<
 >> = props => {
   const history = useHistory();
   const [name, setName] = React.useState("");
+  const [focused, setFocused] = useState(false);
   const [addPlaceList] = useAddPlaceList();
 
   async function onSubmit() {
@@ -35,10 +36,12 @@ const CreatePlaceList: React.FC<Omit<
     >
       <CreateInput
         {...props}
-        placeholder="Add place list"
+        placeholder={focused ? "Enter a title" : "Add a place list"}
         icon={AddIcon}
         value={name}
         onChange={e => setName(e.currentTarget.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
       />
     </form>
   );
