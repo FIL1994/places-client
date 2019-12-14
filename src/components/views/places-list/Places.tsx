@@ -1,7 +1,7 @@
 import React from "react";
 import { usePlaceList } from "../../../hooks/requestHooks";
 import { PlacesContext } from "./PlaceList";
-import { onEnter } from "../../../utils/helpers";
+import PlaceCard from "../place-lists/PlaceCard";
 import "./places.less";
 
 const Places: React.FC = () => {
@@ -40,7 +40,7 @@ const Places: React.FC = () => {
 
   return (
     <ul ref={placesRef as any} className="places">
-      {places.map(({ imageUrl, ...place }) => {
+      {places.map(place => {
         const onClick = () => {
           setSelectedPlaceId(place.id);
           map.setCenter({
@@ -50,25 +50,12 @@ const Places: React.FC = () => {
         };
 
         return (
-          /* eslint-disable */
-          <li
+          <PlaceCard
             key={place.id}
-            data-id={place.id}
-            className={`place ${
-              place.id === selectedPlaceId ? "selected" : ""
-            }`}
-            tabIndex={0}
+            selected={place.id === selectedPlaceId}
+            place={place}
             onClick={onClick}
-            onKeyDown={onEnter(onClick)}
-          >
-            {/* eslint-enable */}
-            {imageUrl && <img alt={place.title} src={imageUrl} height={165} />}
-            <div className="place--content">
-              <h2>{place.title}</h2>
-              <h3>{place.address}</h3>
-              <p>{place.description}</p>
-            </div>
-          </li>
+          />
         );
       })}
     </ul>
