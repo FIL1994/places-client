@@ -43,6 +43,7 @@ export const PLACE_LISTS = gql`
     placeLists {
       id
       title
+      imageUrl
       places {
         id
       }

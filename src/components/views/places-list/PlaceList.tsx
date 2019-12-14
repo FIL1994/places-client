@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Places from "../../Places";
+import Places from "./Places";
 import Map from "../../Map";
 import ActionBar from "../ActionBar";
 import PlacesModal from "./PlaceModal";

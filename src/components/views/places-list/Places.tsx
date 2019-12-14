@@ -1,7 +1,7 @@
 import React from "react";
-import { usePlaceList } from "../hooks/requestHooks";
-import { PlacesContext } from "./views/places-list/PlaceList";
-import { onEnter } from "../utils/helpers";
+import { usePlaceList } from "../../../hooks/requestHooks";
+import { PlacesContext } from "./PlaceList";
+import { onEnter } from "../../../utils/helpers";
 import "./places.less";
 
 const Places: React.FC = () => {

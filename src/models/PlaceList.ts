@@ -5,4 +5,5 @@ export default interface PlaceList {
   user: any;
   title: string;
   places: Place[];
+  imageUrl?: string;
 }
