@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { getIcon } from "../../utils/iconUtils";
 import "./button.less";
 

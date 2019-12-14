@@ -1,13 +1,12 @@
-import * as React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useLoadScript } from "@react-google-maps/api";
 import Header from "./header/Header";
-import PlaceList from "./pages/places-list/PlaceList";
 import User from "../models/User";
-import PlaceLists from "./PlaceLists";
+
+const Routes = React.lazy(() => import("./Routes"));
 
 interface IAppContext {
-  isMapLoaded: boolean;
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
 }
@@ -35,7 +34,6 @@ const App = () => {
   return (
     <AppContext.Provider
       value={{
-        isMapLoaded: isLoaded,
         user,
         setUser
       }}
@@ -43,9 +41,11 @@ const App = () => {
       <Router>
         <Header />
         <main>
-          <Route exact path="/" component={PlaceLists} />
-          <Route exact path="/places" component={PlaceLists} />
-          <Route exact path="/places/:id" component={PlaceList} />
+          {isLoaded && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes />
+            </Suspense>
+          )}
         </main>
       </Router>
     </AppContext.Provider>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import defaultIconProps from "./iconDefaultProps";
 
 const Delete: React.FC<React.SVGProps<SVGSVGElement>> = props => (

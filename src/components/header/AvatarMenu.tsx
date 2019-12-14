@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Avatar from "react-avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
