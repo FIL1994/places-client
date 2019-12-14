@@ -33,9 +33,9 @@ const PlaceForm: React.FC = () => {
         if (imageUrl.trim().length < 1 && place.photos) {
           setImageUrl(place.photos[0].getUrl({}));
         }
-        setTitle(title => {
-          if (title.trim().length === 0) return place.name;
-          return title;
+        setTitle(currentTitle => {
+          if (currentTitle.trim().length === 0) return place.name;
+          return currentTitle;
         });
       }
     );
