@@ -33,6 +33,10 @@ const PlaceForm: React.FC = () => {
         if (imageUrl.trim().length < 1 && place.photos) {
           setImageUrl(place.photos[0].getUrl({}));
         }
+        setTitle(title => {
+          if (title.trim().length === 0) return place.name;
+          return title;
+        });
       }
     );
   }, [googleAutocomplete]);
@@ -54,7 +58,12 @@ const PlaceForm: React.FC = () => {
             const autocomplete = new window.google.maps.places.Autocomplete(
               input
             );
-            autocomplete.setFields(["geometry", "formatted_address", "photos"]);
+            autocomplete.setFields([
+              "geometry",
+              "formatted_address",
+              "photos",
+              "name"
+            ]);
             setGoogleAutocomplete(autocomplete);
           } else {
             /* eslint-disable no-console */
