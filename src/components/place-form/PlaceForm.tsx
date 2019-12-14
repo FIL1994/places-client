@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useAddPlace } from "../../hooks/requestHooks";
-import { PlacesContext } from "../pages/places-list/PlaceList";
+import { PlacesContext } from "../views/places-list/PlaceList";
 import "./place-form.less";
 
 const PlaceForm: React.FC = () => {

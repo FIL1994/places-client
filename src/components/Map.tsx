@@ -1,7 +1,7 @@
 import React from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { usePlaces } from "../hooks/requestHooks";
-import { PlacesContext } from "./pages/places-list/PlaceList";
+import { PlacesContext } from "./views/places-list/PlaceList";
 import "./map.less";
 
 const Map = () => {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
-import CreateInput from "../elements/CreateInput";
-import { useAddPlaceList } from "../../hooks/requestHooks";
+import CreateInput from "../../elements/CreateInput";
+import { useAddPlaceList } from "../../../hooks/requestHooks";
 
 const CreatePlaceList: React.FC<Omit<
   React.ComponentProps<typeof CreateInput>,

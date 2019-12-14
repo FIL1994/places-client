@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import PlaceList from "./pages/places-list/PlaceList";
-import PlaceLists from "./PlaceLists";
+import PlaceList from "./views/places-list/PlaceList";
+import PlaceLists from "./views/place-lists/PlaceLists";
 
 const Routes = () => {
   return (

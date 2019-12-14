@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { usePlaceLists } from "../hooks/requestHooks";
-import CreatePlaceList from "./place-list/CreatePlaceList";
+import { usePlaceLists } from "../../../hooks/requestHooks";
+import CreatePlaceList from "./CreatePlaceList";
 
 const PlaceLists = () => {
   const { loading, error, placeLists } = usePlaceLists();

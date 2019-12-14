@@ -1,6 +1,6 @@
 import React from "react";
 import { usePlaceList } from "../hooks/requestHooks";
-import { PlacesContext } from "./pages/places-list/PlaceList";
+import { PlacesContext } from "./views/places-list/PlaceList";
 import { onEnter } from "../utils/helpers";
 import "./places.less";
 
