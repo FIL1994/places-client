@@ -1,8 +1,9 @@
 import Place from "./Place";
+import User from "./User";
 
 export default interface PlaceList {
   id: number;
-  user: any;
+  user: Partial<User>;
   title: string;
   places: Place[];
   imageUrl?: string;

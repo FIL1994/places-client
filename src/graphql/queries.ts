@@ -24,6 +24,9 @@ export const PLACE_LIST = gql`
   query placeList($placeListId: ID!) {
     placeList(placeListId: $placeListId) {
       id
+      user {
+        id
+      }
       title
       places {
         id
