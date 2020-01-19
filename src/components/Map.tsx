@@ -23,14 +23,14 @@ const Map = () => {
             mapTypeControl: false
           }}
         >
-          {places.map(({ id, lat, lng }) => (
+          {places.map(({ id: placeId, lat, lng }) => (
             <Marker
-              key={id}
+              key={placeId}
               position={{ lat, lng }}
               onClick={() => {
-                setSelectedPlaceId(id);
+                setSelectedPlaceId(placeId);
                 const placeElement = document.querySelector(
-                  `.place[data-id="${id}"]`
+                  `.place[data-id="${placeId}"]`
                 );
                 placeElement.scrollIntoView();
               }}
