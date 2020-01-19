@@ -1,12 +1,13 @@
 import React from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
-import { usePlaces } from "../hooks/requestHooks";
+import { usePlaceList } from "../hooks/requestHooks";
 import { PlacesContext } from "./views/places-list/PlaceList";
 import "./map.less";
 
 const Map = () => {
-  const { setSelectedPlaceId, setMap } = React.useContext(PlacesContext);
-  const { places } = usePlaces();
+  const { setSelectedPlaceId, setMap, id } = React.useContext(PlacesContext);
+  const { placeList } = usePlaceList(id);
+  const places = placeList?.places ?? [];
 
   return (
     <div className="map">
