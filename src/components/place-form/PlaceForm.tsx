@@ -31,9 +31,6 @@ const PlaceForm: React.FC = () => {
         setAddress(place.formatted_address);
         setLat(place.geometry.location.lat());
         setLng(place.geometry.location.lng());
-        if (imageUrl.trim().length < 1 && place.photos) {
-          setImageUrl(place.photos[0].getUrl({}));
-        }
         setTitle(currentTitle => {
           if (currentTitle.trim().length === 0) return place.name;
           return currentTitle;
@@ -63,7 +60,6 @@ const PlaceForm: React.FC = () => {
             autocomplete.setFields([
               "geometry",
               "formatted_address",
-              "photos",
               "name",
               "place_id"
             ]);
