@@ -16,6 +16,7 @@ export const PLACES = gql`
       address
       lat
       lng
+      photoReference
     }
   }
 `;
@@ -36,6 +37,7 @@ export const PLACE_LIST = gql`
         lng
         description
         imageUrl
+        photoReference
       }
     }
   }

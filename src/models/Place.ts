@@ -6,4 +6,6 @@ export default interface Place {
   imageUrl?: string;
   lat: number;
   lng: number;
+  googleId?: string;
+  photoReference: string;
 }

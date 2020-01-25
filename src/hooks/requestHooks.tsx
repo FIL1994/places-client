@@ -72,7 +72,7 @@ export const useDeletePlace = () =>
     refetchQueries: [Queries.PlaceList]
   });
 
-interface PlaceInput extends Omit<Place, "id"> {
+interface PlaceInput extends Omit<Place, "id" | "photoReference"> {
   placeListId: string;
 }
 

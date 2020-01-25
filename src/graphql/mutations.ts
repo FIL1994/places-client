@@ -21,6 +21,7 @@ export const ADD_PLACE = gql`
     $description: String
     $imageUrl: String!
     $placeListId: ID!
+    $googleId: String!
   ) {
     addPlace(
       place: {
@@ -31,6 +32,7 @@ export const ADD_PLACE = gql`
         lat: $lat
         lng: $lng
         placeListId: $placeListId
+        googleId: $googleId
       }
     ) {
       id
