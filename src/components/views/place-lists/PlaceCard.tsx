@@ -1,12 +1,13 @@
 import React from "react";
 import Place from "../../../models/Place";
 import { onEnter } from "../../../utils/helpers";
+import { PhotoUtils } from "../../../utils/photoUtils";
 
 const PlaceCard: React.FC<{
   place: Place;
   onClick: (event: any) => void;
   selected: boolean;
-}> = ({ place: { imageUrl, ...place }, onClick, selected }) => {
+}> = ({ place, onClick, selected }) => {
   return (
     /* eslint-disable */
     <li
@@ -17,7 +18,7 @@ const PlaceCard: React.FC<{
       onKeyDown={onEnter(onClick)}
     >
       {/* eslint-enable */}
-      {imageUrl && <img alt={place.title} src={imageUrl} height={165} />}
+      <img alt={place.title} src={PhotoUtils.photoUrl(place)} height={165} />
       <div className="place--content">
         <h2>{place.title}</h2>
         <h3>{place.address}</h3>
