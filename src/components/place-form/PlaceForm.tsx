@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useAddPlace } from "../../hooks/requestHooks";
@@ -17,6 +17,7 @@ const PlaceForm: React.FC = () => {
   const [address, setAddress] = React.useState("");
   const [lat, setLat] = React.useState();
   const [lng, setLng] = React.useState();
+  const [, setPlaceReference] = useState();
 
   React.useEffect(() => {
     if (!googleAutocomplete) return;
@@ -37,6 +38,7 @@ const PlaceForm: React.FC = () => {
           if (currentTitle.trim().length === 0) return place.name;
           return currentTitle;
         });
+        setPlaceReference((place as any).reference);
       }
     );
   }, [googleAutocomplete]);
@@ -62,7 +64,8 @@ const PlaceForm: React.FC = () => {
               "geometry",
               "formatted_address",
               "photos",
-              "name"
+              "name",
+              "reference"
             ]);
             setGoogleAutocomplete(autocomplete);
           } else {
