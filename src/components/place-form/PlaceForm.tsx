@@ -15,9 +15,9 @@ const PlaceForm: React.FC = () => {
     google.maps.places.Autocomplete
   >();
   const [address, setAddress] = React.useState("");
-  const [lat, setLat] = React.useState();
-  const [lng, setLng] = React.useState();
-  const [, setPlaceReference] = useState();
+  const [lat, setLat] = React.useState<number>();
+  const [lng, setLng] = React.useState<number>();
+  const [googleId, setGoogleId] = useState<string>();
 
   React.useEffect(() => {
     if (!googleAutocomplete) return;
@@ -38,7 +38,7 @@ const PlaceForm: React.FC = () => {
           if (currentTitle.trim().length === 0) return place.name;
           return currentTitle;
         });
-        setPlaceReference((place as any).reference);
+        setGoogleId(place.place_id);
       }
     );
   }, [googleAutocomplete]);
@@ -65,7 +65,7 @@ const PlaceForm: React.FC = () => {
               "formatted_address",
               "photos",
               "name",
-              "reference"
+              "place_id"
             ]);
             setGoogleAutocomplete(autocomplete);
           } else {
@@ -102,7 +102,8 @@ const PlaceForm: React.FC = () => {
               address,
               lat,
               lng,
-              placeListId: id
+              placeListId: id,
+              googleId
             }
           });
           setIsModalOpen(false);
