@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { usePlaceLists } from "../../../hooks/requestHooks";
 import CreatePlaceList from "./CreatePlaceList";
+import "./place-lists.less";
+import { PhotoUtils } from "../../../utils/photoUtils";
 
 const PlaceLists = () => {
   const { loading, error, placeLists } = usePlaceLists();
@@ -28,10 +30,18 @@ const PlaceLists = () => {
         "You don't have any place lists yet."
       ) : (
         <ul className="place-lists">
-          {placeLists.map(({ id, title }) => {
+          {placeLists.map(({ id, title, ...place }) => {
+            console.log("place", place);
+            const imgSrc = PhotoUtils.photoUrl(place.places[0]);
+
             return (
               <li key={id}>
-                <Link to={`/places/${id}`}>{title}</Link>
+                <Link to={`/places/${id}`} className="place-list">
+                  <img alt={title} src={imgSrc} height={165} />
+                  <div className="place-list--content">
+                    <h2>{title}</h2>
+                  </div>
+                </Link>
               </li>
             );
           })}

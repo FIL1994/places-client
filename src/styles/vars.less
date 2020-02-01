@@ -3,3 +3,21 @@
 @header-margin-bottom: 16px;
 @header-height: 40px;
 @horizontal-margin: 16px;
+@place-box-shadow-color: darken(@box-shadow-color, 4%);
+@card-shadow: 0 1px 3px 0 @place-box-shadow-color;
+@selected-card-shadow: 0 1px 5px 0 darken(@place-box-shadow-color, 10%);
+
+.card-container() {
+  display: flex;
+  list-style: none;
+}
+
+.card() {
+  width: 300px;
+  border-radius: @border-radius;
+  box-shadow: @card-shadow;
+  flex-shrink: 0;
+  transition: 0.2s ease box-shadow;
+  position: relative;
+  overflow: hidden;
+}
