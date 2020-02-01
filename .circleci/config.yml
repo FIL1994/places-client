@@ -3,7 +3,7 @@ jobs:
   lint:
     docker:
       - image: circleci/node:10
-    parallelism: 4
+    parallelism: 1
     steps:
       - checkout
       - run:
