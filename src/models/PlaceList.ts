@@ -6,5 +6,4 @@ export default interface PlaceList {
   user: Partial<User>;
   title: string;
   places: Place[];
-  imageUrl?: string;
 }

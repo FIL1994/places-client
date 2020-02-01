@@ -12,7 +12,6 @@ export const PLACES = gql`
       id
       title
       description
-      imageUrl
       address
       lat
       lng
@@ -36,7 +35,6 @@ export const PLACE_LIST = gql`
         lat
         lng
         description
-        imageUrl
         photoReference
       }
     }
@@ -48,9 +46,9 @@ export const PLACE_LISTS = gql`
     placeLists {
       id
       title
-      imageUrl
       places {
         id
+        photoReference
       }
     }
   }
